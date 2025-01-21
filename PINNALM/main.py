@@ -182,20 +182,20 @@ configuration = {
     "Layers": 10,
     "Neurons": 150,
     "Activation": "Tanh",
-    "Flag_pretrain": False,
-    "Flag_initialization": True,
+    "Flag_pretrain":True,
+    "Flag_initialization": False,
     "iteration_num": 30000,
     "warmup_steps": 15000,
     "N_boundary": 400,  # Each Boundary
     "N_domain": 10000,
     "Domain": "x -> [0,1], y -> [0,1]",
-    "Pr_Gr_Re": [0.71, 0.0, 400],
+    "Pr_Gr_Re": [0.71,1E6, 100],
     "Sparseness": None, 
     "Adam": 0,
     "Learning Rate": 5e-4,
     "Learning Rate Scheme": "LambdaLR",
     "LBFGS": 1,
-    "Note": "_Gr=0_Re=400.pth",
+    "Note": "_Gr=1E6_Re=100.pth",
 }
 
 run = wandb.init(project='NS_Energy',
@@ -273,9 +273,9 @@ else:
 
 if configuration['Flag_pretrain']:
     print('Reading previous results')
-    checkpoint = torch.load("modelsj7xo73od_Gr=0_Re=100.path")
+    checkpoint = torch.load("fbvqr5lq_Gr=1E6_Re=1000.pth")
     net.load_state_dict(checkpoint['model_state_dict'])
-    optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+
 
 wandb.watch(net, log='all')
 wandb.run.summary['Params'] = net.count_params()

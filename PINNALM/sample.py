@@ -35,7 +35,7 @@ def data_sampling(N_b, N_f):
 
 def dataT_sampling():
     # 添加温度数据点
-    theta_txt_data = np.loadtxt("theta_Gr=0_Re=400.txt", comments="%")
+    theta_txt_data = np.loadtxt("theta_Gr=106_Re=100.txt", comments="%")
     x_txt_theta = theta_txt_data[:, 0]
     y_txt_theta = theta_txt_data[:, 1]
     theta_txt = theta_txt_data[:, 2]
